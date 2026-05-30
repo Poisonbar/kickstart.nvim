@@ -1,0 +1,53 @@
+diff --git a/init.lua b/init.lua
+index 5d29c72..5ec51c1 100644
+--- a/init.lua
++++ b/init.lua
+@@ -99,7 +99,7 @@ do
+   vim.g.maplocalleader = ' '
+ 
+   -- Set to true if you have a Nerd Font installed and selected in the terminal
+-  vim.g.have_nerd_font = false
++  vim.g.have_nerd_font = true
+ 
+   -- [[ Setting options ]]
+   --  See `:help vim.o`
+@@ -733,7 +733,7 @@ do
+       },
+     },
+   }
+-
++  servers = vim.tbl_deep_extend('force', servers, require 'custom.plugins.lsp')
+   vim.pack.add {
+     gh 'neovim/nvim-lspconfig',
+     gh 'mason-org/mason.nvim',
+@@ -846,7 +846,7 @@ do
+       -- <c-k>: Toggle signature help
+       --
+       -- See `:help blink-cmp-config-keymap` for defining your own keymap
+-      preset = 'default',
++      preset = 'super-tab',
+ 
+       -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+       --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+@@ -970,7 +970,7 @@ do
+   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
+   --
+   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
+-  -- require 'custom.plugins'
++  require 'custom.plugins'
+ end
+ 
+ -- The line beneath this is called `modeline`. See `:help modeline`
+diff --git a/lua/custom/plugins/lsp.lua b/lua/custom/plugins/lsp.lua
+index 6a863ab..ec3abe1 100644
+--- a/lua/custom/plugins/lsp.lua
++++ b/lua/custom/plugins/lsp.lua
+@@ -3,16 +3,16 @@ local servers = {
+     cmd = {
+       'clangd',
+       '--background-index',
+-      '--clang-tidy',
++      '--clang-tidy=false',
+       '--completion-style=detailed',
+       '--header-insertion=iwyu',
+       '--cross-file-rename',
