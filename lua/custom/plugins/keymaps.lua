@@ -21,7 +21,6 @@ do
   vim.keymap.set('v', '<', '<gv', { desc = ' Unindent while keeping selection' })
   vim.keymap.set('v', '>', '>gv', { desc = ' Indent while keeping selection' })
 
-  vim.keymap.set('n', '<CR>', 'o<Esc>', { desc = ' Create newline below' })
   vim.keymap.set('n', 'J', 'mzJ`z', { desc = ' Join lines' })
 
   vim.keymap.set('n', 'n', 'nzzzv', { desc = ' Next search result cursor centered' })

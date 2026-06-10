@@ -38,16 +38,3 @@ index 5d29c72..5ec51c1 100644
  end
  
  -- The line beneath this is called `modeline`. See `:help modeline`
-diff --git a/lua/custom/plugins/lsp.lua b/lua/custom/plugins/lsp.lua
-index 6a863ab..ec3abe1 100644
---- a/lua/custom/plugins/lsp.lua
-+++ b/lua/custom/plugins/lsp.lua
-@@ -3,16 +3,16 @@ local servers = {
-     cmd = {
-       'clangd',
-       '--background-index',
--      '--clang-tidy',
-+      '--clang-tidy=false',
-       '--completion-style=detailed',
-       '--header-insertion=iwyu',
-       '--cross-file-rename',

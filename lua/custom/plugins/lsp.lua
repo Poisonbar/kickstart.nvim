@@ -1,39 +1,21 @@
 local servers = {
   clangd = {
-    cmd = {
-      'clangd',
-      '--background-index',
-      '--clang-tidy',
-      '--completion-style=detailed',
-      '--header-insertion=iwyu',
-      '--cross-file-rename',
-    },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
-    root_dir = vim.fs.root(0, {'compile_commands.json', 'compile_flags.txt', '.git'}),
+    root_dir = vim.fs.root(0, { 'compile_commands.json', 'compile_flags.txt', '.clangd', '.git', }),
+    cmd = vim.tbl_extend('force', { 'clangd' }, vim.fn.filereadable 'no-clangd-bg' == 1 and { '--background-index=false' } or {'--background-index'}),
   },
   pyright = {
     root_dir = vim.fs.root(0, { 'pyproject.toml', '.git'}),
     filetypes = { 'python' },
-    settings = {
-      python = {
-        analysis = {
-          autoSearchPaths = true,
-          diagnosticMode = 'workspace',
-          useLibraryCodeForTypes = true,
-        },
-      },
-    },
+  },
+  bashls = {
+    filetypes = { 'sh', 'bash' },
   },
 }
 
 return servers
 
-
-
 -- local s = {
---   bashls = {
---     filetypes = { 'sh', 'bash' },
---   },
 --   ts_ls = {
 --     root_dir = vim.fs.root(0, { 'package.json', 'tsconfig.json', '.git' }),
 --     filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },

@@ -1,7 +1,6 @@
 do
   vim.g.netrw_banner=0
   vim.g.netrw_liststyle=3
-  vim.g.indent_blankline_char = '▏'
 
   vim.o.laststatus=3
 
@@ -15,8 +14,8 @@ do
   vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
   vim.o.foldmethod = 'expr'
 
-  -- vim.o.foldlevel = 99
-  -- vim.o.foldlevelstart = -1
+  vim.o.foldlevel = 99
+  vim.o.foldlevelstart = 10
 
   vim.o.linebreak = true -- Wrap at word boundaries
   vim.o.showbreak = '↪ ' -- Add a visual cue at the start of wrapped lines
@@ -30,8 +29,8 @@ do
 
   vim.o.updatetime = 10000 --ms: 5 minutes interval between each update of swap files
 
-  -- vim.o.guicursor=''
+  vim.o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
   vim.o.termguicolors=true
 
-  vim.o.cmdheight=0
+  -- vim.o.cmdheight=0
 end

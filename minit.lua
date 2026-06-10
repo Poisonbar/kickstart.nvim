@@ -47,7 +47,7 @@ do
   -- vim.o.guicursor=''
   vim.o.termguicolors=true
 
-  vim.o.cmdheight=0
+  -- vim.o.cmdheight=0
 
   vim.o.mouse = 'a'
   vim.o.showmode = false
@@ -163,7 +163,6 @@ do
       },
     },
   }
-  require 'kickstart.plugins.indent_line'
   require 'kickstart.plugins.autopairs'
 
   vim.keymap.set({ 'n', 'v' }, '<leader>f', function() require('conform').format { async = true } end, { desc = '[F]ormat buffer' })
