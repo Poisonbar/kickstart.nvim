@@ -47,7 +47,7 @@ do
   -- vim.o.guicursor=''
   vim.o.termguicolors=true
 
-  vim.o.cmdheight=0
+  -- vim.o.cmdheight=0
 
   vim.o.mouse = 'a'
   vim.o.showmode = false
@@ -127,5 +127,6 @@ do
     callback = function() vim.hl.on_yank() end,
   })
 
+  require 'kickstart.plugins.autopairs'
   end
 

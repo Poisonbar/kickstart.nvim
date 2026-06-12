@@ -6,7 +6,7 @@ do
       lua = { 'stylua' },
       python = { 'ruff_fix', 'ruff_format' },
       cpp = { 'clang-format' },
-      -- bash = { 'shfmt' },
+      bash = { 'shfmt' },
       -- tex = { "latexindent" },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
@@ -15,12 +15,9 @@ do
       -- json = { "jq", "prettierd", "prettier", stop_after_first = true },
     },
     formatters = {
-      ['clang-format'] = {
-        prepend_args = { '--style={IndentWidth: 3}' },
+      shfmt = {
+        prepend_args = { '-i', '4' },
       },
-      --        shfmt = {
-      --            prepend_args = { "-i", "4" },
-      --        },
     },
   }
 end

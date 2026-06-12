@@ -1,20 +1,20 @@
 -- Catppuccin theme setup (Neovim)
 -- This controls colors, syntax highlighting, and plugin UI styling
 do
-  vim.pack.add{ "https://github.com/catppuccin/nvim" }
+  vim.pack.add { 'https://github.com/catppuccin/nvim' }
 
-  require("catppuccin").setup({
+  require('catppuccin').setup {
 
     ------------------------------------------------------------
     -- 🎨 BASE STYLE (global look & feel)
     ------------------------------------------------------------
 
-    flavor = "mocha", -- "latte", "frappe", "macchiato"
+    flavor = 'mocha', -- "latte", "frappe", "macchiato"
     -- mocha = darkest, most popular for coding
 
     background = {
-      light = "latte",
-      dark = "mocha",
+      light = 'latte',
+      dark = 'mocha',
     },
 
     transparent_background = false,
@@ -29,7 +29,7 @@ do
 
     compile = {
       enabled = true,
-      path = vim.fn.stdpath("cache") .. "/catppuccin",
+      path = vim.fn.stdpath 'cache' .. '/catppuccin',
     },
 
     ------------------------------------------------------------
@@ -119,7 +119,7 @@ do
 
       mini = {
         enabled = true,
-        indentscope_color = "",
+        indentscope_color = '',
         -- mini.indentscope = indentation highlight module
       },
     },
@@ -140,7 +140,7 @@ do
     -- 🧠 CORE SYNTAX + UI CONTROL (MOST IMPORTANT SECTION)
     ------------------------------------------------------------
 
-  -- NOTE: this portion is commented out. we can check it later
+    -- NOTE: this portion is commented out. we can check it later
 
     -- custom_highlights = function(colors)
     --   return {
@@ -209,6 +209,6 @@ do
     ------------------------------------------------------------
 
     default_integrations = true,
-  })
-  vim.cmd.colorscheme('catppuccin-mocha')
+  }
+  vim.cmd.colorscheme 'catppuccin-mocha'
 end

@@ -1,5 +1,5 @@
 diff --git a/init.lua b/init.lua
-index 5d29c72..5ec51c1 100644
+index aff5250..b90b60b 100644
 --- a/init.lua
 +++ b/init.lua
 @@ -99,7 +99,7 @@ do
@@ -11,16 +11,16 @@ index 5d29c72..5ec51c1 100644
  
    -- [[ Setting options ]]
    --  See `:help vim.o`
-@@ -733,7 +733,7 @@ do
-       },
-     },
-   }
+@@ -763,7 +763,7 @@ do
+   })
+ 
+   require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 -
 +  servers = vim.tbl_deep_extend('force', servers, require 'custom.plugins.lsp')
-   vim.pack.add {
-     gh 'neovim/nvim-lspconfig',
-     gh 'mason-org/mason.nvim',
-@@ -846,7 +846,7 @@ do
+   for name, server in pairs(servers) do
+     vim.lsp.config(name, server)
+     vim.lsp.enable(name)
+@@ -852,7 +852,7 @@ do
        -- <c-k>: Toggle signature help
        --
        -- See `:help blink-cmp-config-keymap` for defining your own keymap
@@ -29,7 +29,20 @@ index 5d29c72..5ec51c1 100644
  
        -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
        --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
-@@ -970,7 +970,7 @@ do
+@@ -863,8 +863,11 @@ do
+       -- Adjusts spacing to ensure icons are aligned
+       nerd_font_variant = 'mono',
+     },
+-
+     completion = {
++      menu = {
++        auto_show = true,
++        auto_show_delay_ms = 500,
++      },
+       -- By default, you may press `<c-space>` to show the documentation.
+       -- Optionally, set `auto_show = true` to show the documentation after a delay.
+       documentation = { auto_show = false, auto_show_delay_ms = 500 },
+@@ -976,7 +979,7 @@ do
    -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
    --
    --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.

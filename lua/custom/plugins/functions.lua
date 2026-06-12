@@ -1,13 +1,23 @@
 do
-  local transparency=false
+  local transparency = false
 
   local function coloring()
-    require('catppuccin').setup { transparent_background = not transparency }
-    vim.cmd.colorscheme 'catppuccin'
-    transparency= not transparency
+    local colorscheme = vim.g.colors_name
+    if colorscheme and colorscheme:match("^catppuccin") then
+      require('catppuccin').setup {
+        transparent_background = not transparency,
+      }
+    elseif colorscheme and colorscheme:match("^tokyonight") then
+      require('tokyonight').setup {
+        transparent = not transparency,
+      }
+    end
+
+    vim.notify(vim.g.colors_name, vim.log.levels.INFO)
+    vim.cmd.colorscheme(colorscheme)
+    transparency = not transparency
   end
 
-  vim.api.nvim_create_user_command('Color', coloring, {})
 
   vim.api.nvim_create_user_command('Nuke', function()
     for i = 0, 9 do
@@ -25,14 +35,12 @@ do
 
   vim.api.nvim_create_user_command('Wrap', function() vim.o.wrap = not vim.o.wrap end, {})
 
-  --  local function hide_diagnostics()
-  --      vim.diagnostic.reset(nil, 0)
-  --      vim.notify("All diagnostics cleared, Master.", vim.log.levels.INFO)
-  --      vim.defer_fn(function()
-  --  	vim.notify("   ", vim.log.levels.INFO)
-  --      end, 1000)
-  --  end
-  --  --[[
+  local function hide_diagnostics()
+    vim.diagnostic.reset(nil, 0)
+    vim.notify('All diagnostics cleared, Master.', vim.log.levels.INFO)
+    vim.defer_fn(function() vim.notify('   ', vim.log.levels.INFO) end, 1000)
+  end
 
-  --  vim.keymap.set("n", "<Esc><Esc><Esc>", hide_diagnostics, { desc = "Clear diagnostics and notify" })
+  vim.api.nvim_create_user_command('Color', coloring, {})
+  vim.keymap.set('n', '<Esc><Esc><Esc>', hide_diagnostics, { desc = 'Clear diagnostics and notify' })
 end

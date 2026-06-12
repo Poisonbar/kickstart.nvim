@@ -1,10 +1,15 @@
+local function system_bin(name)
+  return vim.fn.exepath(name) ~= '' and vim.fn.exepath(name) or name
+end
+
 local servers = {
   clangd = {
     filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
     root_dir = vim.fs.root(0, { 'compile_commands.json', 'compile_flags.txt', '.clangd', '.git', }),
-    cmd = vim.tbl_extend('force', { 'clangd' }, vim.fn.filereadable 'no-clangd-bg' == 1 and { '--background-index=false' } or {'--background-index'}),
+    cmd = vim.tbl_extend('force', { system_bin('clangd') }, vim.fn.filereadable 'no-clangd-bg' == 1 and { '--background-index=false' } or {'--background-index'}),
   },
   pyright = {
+    cmd = { system_bin('pyright-langserver'), '--stdio' },
     root_dir = vim.fs.root(0, { 'pyproject.toml', '.git'}),
     filetypes = { 'python' },
   },

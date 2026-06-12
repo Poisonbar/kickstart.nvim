@@ -1,10 +1,10 @@
 do
-  vim.g.netrw_banner=0
-  vim.g.netrw_liststyle=3
+  vim.g.netrw_banner = 0
+  vim.g.netrw_liststyle = 3
 
-  vim.o.laststatus=3
+  vim.o.laststatus = 3
 
-  vim.o.relativenumber=true
+  vim.o.relativenumber = true
 
   vim.o.undodir = '/tmp/nvim_undo'
   vim.fn.mkdir(vim.o.undodir, 'p')
@@ -25,12 +25,12 @@ do
   vim.o.shiftwidth = 4
   vim.o.expandtab = true
 
-  vim.o.smartindent=true
+  vim.o.smartindent = true
 
   vim.o.updatetime = 10000 --ms: 5 minutes interval between each update of swap files
 
-  vim.o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
-  vim.o.termguicolors=true
+  -- vim.o.guicursor = '' -- n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  vim.o.termguicolors = true
 
   -- vim.o.cmdheight=0
 end
